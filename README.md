@@ -12,8 +12,10 @@ In this part we'll explore a few basic building blocks in Haskell, including fun
 runghc hello.hs > hello.html
 ```
 
-Notes:
+Resources:
 
 > Util DSL library for HTML - [Lucid](https://hackage.haskell.org/package/lucid)
 
 > Learn more about GHCi - [GHC User Guide](https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/ghci.html)
+
+> Package Repository - [Hackage](https://hackage.haskell.org/)
