@@ -11,3 +11,5 @@ In this part we'll explore a few basic building blocks in Haskell, including fun
 ```bash
 runghc hello.hs > hello.html
 ```
+
+> Util DSL library for HTML - [Lucid](https://hackage.haskell.org/package/lucid)
