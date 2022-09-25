@@ -14,8 +14,20 @@ html_ title content =
 p_ :: String -> Structure
 p_ = Structure . el "p" . escape
 
+code_ :: String -> Structure
+code_ = Structure . el "pre" . escape
+
 h1_ :: String -> Structure
 h1_ = Structure . el "h1" . escape
+
+ul_ :: [Structure] -> Structure
+ul_ = list "ul"
+
+ol_ :: [Structure] -> Structure
+ol_ = list "ol"
+
+list :: String -> [Structure] -> Structure
+list tag = Structure . el tag . concat . map (el "li" . getStructureString)
 
 el :: String -> String -> String
 el tag content =
