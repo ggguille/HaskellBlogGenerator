@@ -6,6 +6,8 @@ newtype Structure = Structure String
 
 type Title = String
 
+-- * EDSL
+
 html_ :: Title -> Structure -> Html
 html_ title content =
     Html
@@ -26,24 +28,25 @@ ul_ = list "ul"
 ol_ :: [Structure] -> Structure
 ol_ = list "ol"
 
-list :: String -> [Structure] -> Structure
-list tag = Structure . el tag . concat . map (el "li" . getStructureString)
-
-el :: String -> String -> String
-el tag content =
-    "<" <> tag <> ">" <> content <> "</" <> tag <> ">"
-
 append_ :: Structure -> Structure -> Structure
 append_ c1 c2 =
     Structure (getStructureString c1 <> getStructureString c2)
 
-getStructureString :: Structure -> String
-getStructureString (Structure str) = str
+-- * Render
 
 render :: Html -> String
 render html =
     case html of
         Html str -> str
+
+-- * Utilities
+
+el :: String -> String -> String
+el tag content =
+    "<" <> tag <> ">" <> content <> "</" <> tag <> ">"
+
+getStructureString :: Structure -> String
+getStructureString (Structure str) = str
 
 escape :: String -> String
 escape =
@@ -58,3 +61,6 @@ escape =
         _ -> [c]
     in
     concat . map escapeChar
+
+list :: String -> [Structure] -> Structure
+list tag = Structure . el tag . concat . map (el "li" . getStructureString)
