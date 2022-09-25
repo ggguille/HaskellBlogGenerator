@@ -19,3 +19,19 @@ Resources:
 > Learn more about GHCi - [GHC User Guide](https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/ghci.html)
 
 > Package Repository - [Hackage](https://hackage.haskell.org/)
+
+## [Custom markup language](https://lhbg-book.link/04-markup.html)
+
+In this chapter we will define our own simple markup language and parse documents written in this language into Haskell data structures.
+
+Our markup language will contain the following features:
+
+- Headings: prefix by a number of * characters
+- Paragraphs: a group of lines without empty lines in between
+- Unordered lists: a group of lines each prefixed with -
+- Ordered lists: a group of lines each prefixed with #
+- Code blocks: a group of lines each prefixed with >
+
+Resources:
+
+> Find out which module to import - [Hoogle](https://hoogle.haskell.org/)
