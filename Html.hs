@@ -5,9 +5,11 @@ module Html
   , html_
   , p_
   , code_
+  , h_
   , h1_
   , ul_
   , ol_
+  , empty_
   , render
   )
   where

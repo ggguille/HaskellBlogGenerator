@@ -1,4 +1,5 @@
 module Html.Internal where
+import Numeric.Natural ( Natural )
 
 newtype Html = Html String
 
@@ -19,8 +20,11 @@ p_ = Structure . el "p" . escape
 code_ :: String -> Structure
 code_ = Structure . el "pre" . escape
 
+h_ :: Natural -> String -> Structure
+h_ number = Structure . el ("h" <> show number) . escape
+
 h1_ :: String -> Structure
-h1_ = Structure . el "h1" . escape
+h1_ = h_ 1 . escape
 
 ul_ :: [Structure] -> Structure
 ul_ = list "ul"
@@ -28,8 +32,14 @@ ul_ = list "ul"
 ol_ :: [Structure] -> Structure
 ol_ = list "ol"
 
+empty_ :: Structure
+empty_ = Structure ""
+
 instance Semigroup Structure where
     (<>) c1 c2 = Structure (getStructureString c1 <> getStructureString c2)
+    
+instance Monoid Structure where
+  mempty = empty_
 
 -- * Render
 
