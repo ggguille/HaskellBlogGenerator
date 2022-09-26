@@ -34,6 +34,13 @@ Our markup language will contain the following features:
 - Ordered lists: a group of lines each prefixed with #
 - Code blocks: a group of lines each prefixed with >
 
+We can ask GHC to notify us when we accidentally write overlapping patterns, or when we haven't listed enough patterns to match all possible values, by passing the flag **-Wall** to **ghc** or **runghc**.</br>
+`runghc hello.hs > hello.html -Wall`
+
+Testing parse markup</br>
+`ghci> txt <- readFile "/tmp/sample.txt"`</br>
+`print $ parse txt`
+
 Resources:
 
 > Find out which module to import - [Hoogle](https://hoogle.haskell.org/)
