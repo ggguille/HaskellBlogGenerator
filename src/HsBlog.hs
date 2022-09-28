@@ -1,6 +1,12 @@
-import Html
-import Markup
-import Convert (convert)
+module HsBlog
+  ( main
+  , process
+  )
+  where
+
+import qualified HsBlog.Markup as Markup
+import qualified HsBlog.Html as Html
+import HsBlog.Convert (convert)
 
 import System.Directory (doesFileExist)
 import System.Environment (getArgs)
