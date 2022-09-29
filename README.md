@@ -46,3 +46,50 @@ Resources:
 > Find out which module to import - [Hoogle](https://hoogle.haskell.org/)
 
 > [Substitution and Equational Reasoning](https://gilmi.me/blog/post/2020/10/01/substitution-and-equational-reasoning)
+
+## [Gluing things together](https://lhbg-book.link/05-glue.html)
+
+In this chapter we are going to glue the pieces that we built together and build an actual blog generator. We will:
+
+1. Read markup text from a file
+2. Parse the text to a Document
+3. Convert the result to our Html EDSL
+4. Generate HTML code
+5. Write it to file
+
+While doing so, we will learn:
+
+- How to work with IO
+- How to import external libraries to process whole directories and create a simple command-line interface
+
+Project description is done in a cabal file. We can ask cabal or stack to generate one for us using `cabal init --libandexe` or `stack new`
+
+The [cabal.project](https://cabal.readthedocs.io/en/3.6/cabal-project.html) and [stack.yaml](https://docs.haskellstack.org/en/stable/yaml_configuration/#project-specific-config) files are used by cabal and stack respectively to add additional information on how to build the package. While cabal.project isn't necessary to use cabal, stack.yaml is necessary in order to use stack, so we will cover it briefly.
+
+Resources:
+
+> More information about imports, see this [wiki article](https://wiki.haskell.org/Import).
+
+> [Monoid](https://hackage.haskell.org/package/base-4.15.0.0/docs/Prelude.html#t:Monoid)
+
+> Haskell's central package archive - [Stackage](https://www.stackage.org/)
+
+> The most popular package managers for Haskell are [cabal](https://cabal.readthedocs.io/en/stable/) and [stack](https://docs.haskellstack.org/en/stable/)
+
+> [Core Haskell Tools](https://gilmi.me/blog/post/2021/08/14/hs-core-tools)
+
+> You can find more licenses if you'd like at [choosealicense.com](choosealicense.com).
+
+> [Cabal Commands](https://cabal.readthedocs.io/en/3.6/cabal-commands.html)
+
+> The `optparse-applicative` package has pretty decent [documentation](https://hackage.haskell.org/package/optparse-applicative-0.16.1.0#optparse-applicative)
+
+> [Functor](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-Functor.html#t:Functor)
+
+> [Applicative](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Applicative.html#t:Applicative)
+
+> You can find the laws for the applicative functors in this article called [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia#Laws_2), which talks about various useful type classes and their laws.
+
+> [Alternative](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Applicative.html#t:Alternative)
+
+> [Handle](https://hackage.haskell.org/package/base-4.15.0.0/docs/System-IO.html#t:Handle)
