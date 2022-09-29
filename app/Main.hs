@@ -13,10 +13,10 @@ main :: IO ()
 main = do
   options <- parse
   case options of
-    ConvertDir input output ->
+    ConvertDir input output _ ->
       HsBlog.convertDirectory input output
 
-    ConvertSingle input output -> do
+    ConvertSingle input output replace -> do
       (title, inputHandle) <-
         case input of
           Stdin ->
@@ -30,7 +30,7 @@ main = do
           OutputFile file -> do
             exists <- doesFileExist file
             shouldOpenFile <-
-              if exists
+              if exists && not replace
                 then confirm
                 else pure True
             if shouldOpenFile
@@ -49,7 +49,7 @@ main = do
 -- | Confirm user action
 confirm :: IO Bool
 confirm =
-  putStrLn "Are you sure? (y/n)" *>
+  putStrLn "File already exist and it will be replaced. Are you sure? (y/n)" *>
     getLine >>= \answer ->
       case answer of
         "y" -> pure True

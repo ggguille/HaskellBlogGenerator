@@ -16,8 +16,8 @@ import Options.Applicative
 
 -- | Model
 data Options
-  = ConvertSingle SingleInput SingleOutput
-  | ConvertDir FilePath FilePath
+  = ConvertSingle SingleInput SingleOutput ReplaceFileConfirmation
+  | ConvertDir FilePath FilePath ReplaceFileConfirmation
   deriving Show
 
 -- | A single input source
@@ -32,6 +32,7 @@ data SingleOutput
   | OutputFile FilePath
   deriving Show
 
+type ReplaceFileConfirmation = Bool
 ------------------------------------------------
 -- * Parser
 
@@ -71,7 +72,7 @@ pOptions =
 -- | Parser for single source to sink option
 pConvertSingle :: Parser Options
 pConvertSingle =
-  ConvertSingle <$> pSingleInput <*> pSingleOutput
+  ConvertSingle <$> pSingleInput <*> pSingleOutput <*> pReplaceFile
 
 -- | Parser for single input source
 pSingleInput :: Parser SingleInput
@@ -82,6 +83,11 @@ pSingleInput =
 pSingleOutput :: Parser SingleOutput
 pSingleOutput =
   fromMaybe Stdout <$> optional pOutputFile
+
+  -- | Parser for replcae confirmation
+pReplaceFile :: Parser ReplaceFileConfirmation
+pReplaceFile =
+  fromMaybe False <$> optional pReplace
 
 -- | Input file parser
 pInputFile :: Parser SingleInput
@@ -107,12 +113,20 @@ pOutputFile = OutputFile <$> parser
           <> help "Output file"
         )
 
+-- | Replace file parser
+pReplace :: Parser ReplaceFileConfirmation
+pReplace = switch
+  ( long "replace"
+    <> short 'r'
+    <> help "Replace file confirmation"
+  )
+
 ------------------------------------------------
 -- * Directory conversion parser
 
 pConvertDir :: Parser Options
 pConvertDir =
-  ConvertDir <$> pInputDir <*> pOutputDir
+  ConvertDir <$> pInputDir <*> pOutputDir <*> pReplaceFile
 
 -- | Parser for input directory
 pInputDir :: Parser FilePath
