@@ -81,3 +81,15 @@ Resources:
 > You can find more licenses if you'd like at [choosealicense.com](choosealicense.com).
 
 > [Cabal Commands](https://cabal.readthedocs.io/en/3.6/cabal-commands.html)
+
+> The `optparse-applicative` package has pretty decent [documentation](https://hackage.haskell.org/package/optparse-applicative-0.16.1.0#optparse-applicative)
+
+> [Functor](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-Functor.html#t:Functor)
+
+> [Applicative](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Applicative.html#t:Applicative)
+
+> You can find the laws for the applicative functors in this article called [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia#Laws_2), which talks about various useful type classes and their laws.
+
+> [Alternative](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Applicative.html#t:Alternative)
+
+> [Handle](https://hackage.haskell.org/package/base-4.15.0.0/docs/System-IO.html#t:Handle)
