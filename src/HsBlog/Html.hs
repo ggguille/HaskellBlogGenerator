@@ -4,12 +4,16 @@ module HsBlog.Html
   , Structure
   , html_
   , p_
-  , code_
   , h_
-  , h1_
   , ul_
   , ol_
-  , empty_
+  , code_
+  , Content
+  , txt_
+  , img_
+  , link_
+  , b_
+  , i_
   , render
   )
   where

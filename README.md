@@ -93,3 +93,17 @@ Resources:
 > [Alternative](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Applicative.html#t:Alternative)
 
 > [Handle](https://hackage.haskell.org/package/base-4.15.0.0/docs/System-IO.html#t:Handle)
+
+## [Handling errors and multiple files](https://lhbg-book.link/06-errors_and_files.html)
+
+We have left an unimplemented function last chapter, and there are a few more things left for us to do to actually call our program a static blog generator. We still need to process multiple files in a directory and create an index landing page with links to other pages.
+
+Our general strategy for processing whole directories is going to be:
+
+- Create the output directory
+- Grab all file names in a directory
+- Filter them according to their extension, we want to process txt file and copy other files without modification
+- We want to parse each text file, build an index of the result, convert the files to HTML, and write everything to the target directory
+- While our parsing function can't really fail, trying to read or write a file to the file-system can fail in several ways. It would be nice if our static blog generator was robust enough that it wouldn't fail completely if one single file gave it some trouble. This is a good opportunity to learn about error handling in Haskell, both in uneffectful code and for I/O code.
+
+In the next few chapters we'll survey the landscape of error handling in Haskell before figuring out the right approach for our use case.

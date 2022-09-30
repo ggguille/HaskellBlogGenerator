@@ -1,5 +1,4 @@
 -- | Command-line options parsing
-
 module OptParse
   ( Options(..)
   , SingleInput(..)
