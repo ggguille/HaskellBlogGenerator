@@ -107,3 +107,20 @@ Our general strategy for processing whole directories is going to be:
 - While our parsing function can't really fail, trying to read or write a file to the file-system can fail in several ways. It would be nice if our static blog generator was robust enough that it wouldn't fail completely if one single file gave it some trouble. This is a good opportunity to learn about error handling in Haskell, both in uneffectful code and for I/O code.
 
 In the next few chapters we'll survey the landscape of error handling in Haskell before figuring out the right approach for our use case.
+
+Haskell's ability to create very concise code using abstractions is great once one is familiar with the abstractions. Knowing the monad abstraction, we are now already familiar with the core composition API of many libraries - for example:
+
+- [Concurrent](https://hackage.haskell.org/package/stm) and [asynchronous programming](https://hackage.haskell.org/package/async)
+- [Web programming](https://gilmi.me/blog/post/2020/12/05/scotty-bulletin-board)
+- [Testing](http://hspec.github.io/)
+- [Emulating stateful computation](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-State-Lazy.html#g:2)
+- [sharing environment between computations](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Reader.html#g:2)
+- and many more.
+
+Resources:
+
+> [Either](https://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Either.html)
+
+> [Traversable](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-Traversable.html#g:1)
+
+> [Monad](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Monad.html#v:-61--60--60-), [monad laws](https://wiki.haskell.org/Monad_laws)
