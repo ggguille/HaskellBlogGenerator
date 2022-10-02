@@ -93,3 +93,59 @@ Resources:
 > [Alternative](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Applicative.html#t:Alternative)
 
 > [Handle](https://hackage.haskell.org/package/base-4.15.0.0/docs/System-IO.html#t:Handle)
+
+## [Handling errors and multiple files](https://lhbg-book.link/06-errors_and_files.html)
+
+We have left an unimplemented function last chapter, and there are a few more things left for us to do to actually call our program a static blog generator. We still need to process multiple files in a directory and create an index landing page with links to other pages.
+
+Our general strategy for processing whole directories is going to be:
+
+- Create the output directory
+- Grab all file names in a directory
+- Filter them according to their extension, we want to process txt file and copy other files without modification
+- We want to parse each text file, build an index of the result, convert the files to HTML, and write everything to the target directory
+- While our parsing function can't really fail, trying to read or write a file to the file-system can fail in several ways. It would be nice if our static blog generator was robust enough that it wouldn't fail completely if one single file gave it some trouble. This is a good opportunity to learn about error handling in Haskell, both in uneffectful code and for I/O code.
+
+In the next few chapters we'll survey the landscape of error handling in Haskell before figuring out the right approach for our use case.
+
+Haskell's ability to create very concise code using abstractions is great once one is familiar with the abstractions. Knowing the monad abstraction, we are now already familiar with the core composition API of many libraries - for example:
+
+- [Concurrent](https://hackage.haskell.org/package/stm) and [asynchronous programming](https://hackage.haskell.org/package/async)
+- [Web programming](https://gilmi.me/blog/post/2020/12/05/scotty-bulletin-board)
+- [Testing](http://hspec.github.io/)
+- [Emulating stateful computation](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-State-Lazy.html#g:2)
+- [sharing environment between computations](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Reader.html#g:2)
+- and many more.
+
+### [Exceptions](https://lhbg-book.link/06-errors_and_files/03-exceptions.html)
+
+The Control.Exception module provides us with the ability to throw exceptions from IO code.
+
+As an aside, Handler uses a concept called [existentially quantified types](https://en.m.wikibooks.org/wiki/Haskell/Existentially_quantified_types) to hide inside it a function that takes an arbitrary type that implements Exception.
+
+### Language extensions
+
+Haskell is a standardized language. However, GHC provides extensions to the language - additional features that aren't covered in the 98 or 2010 standards of Haskell. Features such as syntactic extensions (like LambdaCase above), extensions to the type checker, and more.
+
+These extensions can be added by adding `{-# language <extension-name> #-}` (the language part is case insensitive) to the top of a Haskell source file, or they can be set globally for an entire project by specifying them in the [default-extensions](https://cabal.readthedocs.io/en/3.6/cabal-package.html#pkg-field-default-extensions) section in the `.cabal file`.
+
+The list of language extensions can be found in the [GHC manual](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts.html), feel free to browse it, but don't worry about trying to memorize all the extensions.
+
+Resources:
+
+> [Either](https://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Either.html)
+
+> [Traversable](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-Traversable.html#g:1)
+
+> [Monad](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Monad.html#v:-61--60--60-), [monad laws](https://wiki.haskell.org/Monad_laws)
+
+> Monad transformers provide a way to stack monad capabilities on top of one another.
+>
+> - [ExceptT](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Except.html#g:2)
+> - [Except](https://hackage.haskell.org/package/transformers-0.6.0.2/docs/Control-Monad-Trans-Except.html#t:Except), same as Either. (ExceptT e Identity)
+
+> [Exception](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Exception.html)
+
+> [IOException](https://hackage.haskell.org/package/base-4.15.0.0/docs/GHC-IO-Exception.html#t:IOException)
+
+> [withFile](https://hackage.haskell.org/package/base-4.17.0.0/docs/System-IO.html#v:withFile)

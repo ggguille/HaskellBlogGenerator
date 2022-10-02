@@ -45,7 +45,8 @@ library HaskellBlogGeneratorLib
     -- other-extensions:
     build-depends:
         base ^>=4.14.3.0,
-        directory ^>=1.3.6.0
+        directory ^>=1.3.6.0,
+        filepath ^>=1.4.2.1
 
     hs-source-dirs:   src
     -- default-language: Haskell2010
@@ -62,6 +63,7 @@ executable HaskellBlogGenerator
     build-depends:
         base ^>=4.14.3.0,
         directory ^>=1.3.6.0,
+        filepath ^>=1.4.2.1,
         optparse-applicative ^>=0.17.0.0,
         HaskellBlogGeneratorLib ^>=0.1.0.0
 
