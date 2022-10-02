@@ -139,7 +139,8 @@ Resources:
 
 > [Monad](https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Monad.html#v:-61--60--60-), [monad laws](https://wiki.haskell.org/Monad_laws)
 
->  Monad transformers provide a way to stack monad capabilities on top of one another.
+> Monad transformers provide a way to stack monad capabilities on top of one another.
+>
 > - [ExceptT](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Except.html#g:2)
 > - [Except](https://hackage.haskell.org/package/transformers-0.6.0.2/docs/Control-Monad-Trans-Except.html#t:Except), same as Either. (ExceptT e Identity)
 
