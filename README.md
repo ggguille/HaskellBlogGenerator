@@ -149,3 +149,24 @@ Resources:
 > [IOException](https://hackage.haskell.org/package/base-4.15.0.0/docs/GHC-IO-Exception.html#t:IOException)
 
 > [withFile](https://hackage.haskell.org/package/base-4.17.0.0/docs/System-IO.html#v:withFile)
+
+## [Passing environment variables](https://lhbg-book.link/07-environment.html)
+
+We'd like to add some sort of an environment to keep general information on the blog for various processings, such as the blog name, stylesheet location, and so on.
+
+### Environment
+
+We can represent our environment as a record data type and build it from user input
+
+Resources:
+
+> [ReaderT](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Reader.html#g:2)
+ 
+> [Reader](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Reader.html#g:2)
+
+
+Sample:
+
+```bash
+cabal run HaskellBlogGenerator -- convert-dir --input .\tmp --output .\html-dist --replace 
+```
