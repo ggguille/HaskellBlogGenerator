@@ -1,10 +1,24 @@
 module HsBlog.Convert where
 
+import Prelude hiding (head)
+import HsBlog.Env (Env(..))
 import qualified HsBlog.Markup as Markup
 import qualified HsBlog.Html as Html
 
-convert :: Html.Title -> Markup.Document -> Html.Html
-convert title = Html.html_ title . foldMap convertStructure
+convert :: Env -> String -> Markup.Document -> Html.Html
+convert env title doc =
+  let
+    head =
+      Html.title_ (eBlogName env <> " - " <> title)
+        <> Html.stylesheet_ (eStylesheetPath env)
+    article =
+      foldMap convertStructure doc
+    websiteTitle =
+      Html.h_ 1 (Html.link_ "index.html" $ Html.txt_ $ eBlogName env)
+    body =
+      websiteTitle <> article
+  in
+    Html.html_ head body
 
 convertStructure :: Markup.Structure -> Html.Structure
 convertStructure structure =
@@ -41,7 +55,7 @@ buildIndex files =
         files
   in
     Html.html_
-      "Blog"
+      (Html.title_ "Blog")
       ( Html.h_ 1 (Html.link_ "index.html" (Html.txt_ "Blog"))
         <> Html.h_ 2 (Html.txt_ "Posts")
         <> mconcat previews
