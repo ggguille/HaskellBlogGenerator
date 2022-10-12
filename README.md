@@ -164,9 +164,30 @@ Resources:
  
 > [Reader](https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Reader.html#g:2)
 
-
 Sample:
 
 ```bash
 cabal run HaskellBlogGenerator -- convert-dir --input .\tmp --output .\html-dist --replace 
 ```
+
+## [Testing](https://lhbg-book.link/08-testing.html)
+
+We want to add some tests to our blog generator. At the very least a few regression tests to make sure that if we extend or change our markup parsing code, HTML generation code, or translation from markup to HTML code, and make a mistake, we'll have a safety net alerting us of issues.
+
+We will use the [hspec](https://hspec.github.io/) testing framework to write our tests. There are other testing frameworks in Haskell, for example [tasty](https://hackage.haskell.org/package/tasty), but I like `hspec`'s documentation, so we'll use that.
+
+[Configuration tests in Cabal](https://cabal.readthedocs.io/en/3.6/cabal-package.html#test-suites)
+
+Resources:
+
+> [Hspec tutorial](https://hspec.github.io/expectations.html)
+
+> [Haddock documentation](https://hackage.haskell.org/package/hspec-expectations-0.8.2/docs/Test-Hspec-Expectations.html)
+
+> [raw-strings-qq](https://hackage.haskell.org/package/raw-strings-qq-1.1/docs/Text-RawString-QQ.html)
+
+> [Hspec manual - Parallel test execution](https://hspec.github.io/parallel-spec-execution.html#running-all-tests-in-parallel-with-hspec-discover)
+
+> [Property testing](https://www.scs.stanford.edu/16wi-cs240h/slides/testing.html)
+
+> [Golden testing](https://ro-che.info/articles/2017-12-04-golden-tests)

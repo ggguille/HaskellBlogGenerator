@@ -10,7 +10,7 @@ data Structure = Heading Natural String
     | UnorderedList [String]
     | OrderedList [String]
     | CodeBlock [String]
-    deriving Show
+    deriving (Eq, Show)
 
 parse :: String -> Document
 parse = parseLines Nothing . lines
