@@ -191,3 +191,17 @@ Resources:
 > [Property testing](https://www.scs.stanford.edu/16wi-cs240h/slides/testing.html)
 
 > [Golden testing](https://ro-che.info/articles/2017-12-04-golden-tests)
+
+## [Generating documentation](https://lhbg-book.link/09-documentation.html)
+
+There are [many ways](https://documentation.divio.com/) to help others to get started with our projects and libraries. For example, we can write tutorials, provide runnable examples, describe the internals of the system, and create an API reference.
+
+In this chapter we will focus on generating API reference pages (the kind that can be seen on Hackage) from annotated Haskell source code using [Haddock](https://wiki.haskell.org/Haddock).
+
+```bash
+cabal haddok
+```
+
+> [Haddock Documentation](https://haskell-haddock.readthedocs.io/en/latest/markup.html)
+
+> [Haddock markup guide](https://haskell-haddock.readthedocs.io/en/latest/markup.html)

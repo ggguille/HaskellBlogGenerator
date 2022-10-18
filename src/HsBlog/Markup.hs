@@ -5,12 +5,23 @@ import Data.Maybe
 
 type Document = [Structure]
 
-data Structure = Heading Natural String
-    | Paragraph String
-    | UnorderedList [String]
-    | OrderedList [String]
-    | CodeBlock [String]
-    deriving (Eq, Show)
+{- | Represents a single markup structure. Such as:
+
+- A paragraph
+- An unordered list
+- A code block
+-}
+data Structure
+  = Heading Natural String
+  -- ^ A section heading with a level
+  | Paragraph String
+  -- ^ A paragraph
+  | UnorderedList [String]
+  -- ^ An unordered list of strings
+  | OrderedList [String]
+  -- ^ An ordered list of strings
+  | CodeBlock [String]
+  -- ^ A code block
 
 parse :: String -> Document
 parse = parseLines Nothing . lines
