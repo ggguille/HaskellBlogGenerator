@@ -23,6 +23,7 @@ data Structure
   | CodeBlock [String]
   -- ^ A code block
 
+{- | Parse file content to Markup Structures. -}
 parse :: String -> Document
 parse = parseLines Nothing . lines
 
