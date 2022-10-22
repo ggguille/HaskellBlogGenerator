@@ -15,10 +15,12 @@ import HsBlog.Env (defaultEnv)
 
 import System.IO
 
+-- | Convert single file
 convertSingle :: String -> Handle -> Handle -> IO ()
 convertSingle title input output = do
   content <- hGetContents input
   hPutStrLn output (process title content)
 
+-- | Convert text files to Markup, build an index, and render as html.  
 process :: String -> String -> String
 process title = Html.render . convert defaultEnv title . Markup.parse

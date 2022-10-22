@@ -1,3 +1,7 @@
+{- | Markup to HTML conversion module.
+This module handles converting documents written in our custom
+Markup language into HTML pages.
+-}
 module HsBlog.Convert where
 
 import Prelude hiding (head)
@@ -5,6 +9,7 @@ import HsBlog.Env (Env(..))
 import qualified HsBlog.Markup as Markup
 import qualified HsBlog.Html as Html
 
+{- | Convert markup document to Html. -}
 convert :: Env -> String -> Markup.Document -> Html.Html
 convert env title doc =
   let
@@ -20,6 +25,7 @@ convert env title doc =
   in
     Html.html_ head body
 
+{- | Mapper from markup to Html structures. -}
 convertStructure :: Markup.Structure -> Html.Structure
 convertStructure structure =
     case structure of
@@ -37,26 +43,3 @@ convertStructure structure =
 
     Markup.CodeBlock list ->
       Html.code_ (unlines list)
-
-buildIndex :: [(FilePath, Markup.Document)] -> Html.Html
-buildIndex files =
-  let
-    previews =
-      map
-        ( \(file, doc) ->
-          case doc of
-            Markup.Heading 1 heading : article ->
-              Html.h_ 3 (Html.link_ file (Html.txt_ heading))
-                <> foldMap convertStructure (take 3 article)
-                <> Html.p_ (Html.link_ file (Html.txt_ "..."))
-            _ ->
-              Html.h_ 3 (Html.link_ file (Html.txt_ file))
-        )
-        files
-  in
-    Html.html_
-      (Html.title_ "Blog")
-      ( Html.h_ 1 (Html.link_ "index.html" (Html.txt_ "Blog"))
-        <> Html.h_ 2 (Html.txt_ "Posts")
-        <> mconcat previews
-      )

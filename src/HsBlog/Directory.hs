@@ -76,6 +76,7 @@ data DirContents
 ------------------------------------
 -- * Build index page
 
+-- | Build index page
 buildIndex :: [(FilePath, Markup.Document)] -> Reader Env Html.Html
 buildIndex files = do
   env <- ask
