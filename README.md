@@ -205,3 +205,9 @@ cabal haddok
 > [Haddock Documentation](https://haskell-haddock.readthedocs.io/en/latest/markup.html)
 
 > [Haddock markup guide](https://haskell-haddock.readthedocs.io/en/latest/markup.html)
+
+## [Recap](https://lhbg-book.link/10-recap.html)
+
+If you'd like to learn even more about Haskell and continue your Haskell journey beyond this book, check out the appendix sections [Where to go next](https://lhbg-book.link/11-next.html) and the [FAQ](https://lhbg-book.link/12-faq.html).
+
+Author site: [https://gilmi.me/](https://gilmi.me/)
